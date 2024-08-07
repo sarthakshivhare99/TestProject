@@ -1,16 +1,12 @@
-  {currentView === "section" && (
-        <Box sx={{ mb: 2 }}>
-          <Select
-            label="Select a Plant"
-            value={selectedPlant}
-            onChange={handlePlantSelection}
-            fullWidth
-          >
-            {plantData.map((plant) => (
-              <MenuItem key={plant.plant_id} value={plant.plant_id}>
-                {plant.Plant}
-              </MenuItem>
-            ))}
-          </Select>
-        </Box>
-      )}
+axios
+      .post("http://localhost:3001/masterApiEndpoint", {
+        plant_id: selectedPlantId,
+        item: 2,
+      })
+      .then((response) => {
+        // Assuming the response contains the data to display in the grid
+        setLoadingData(response.data); // Update this based on your API response
+      })
+      .catch((error) => {
+        console.error("Error fetching data for selected plant:", error);
+      });
