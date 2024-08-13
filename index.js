@@ -1,4 +1,11 @@
-/* custom-styles.css */
-.MuiDataGrid-footerContainer .css-16mfp94-MuiTablePagination-root.MuiTablePagination-selectLabel {
-  margin: 0 !important;
-}
+const customFooterStyle = {
+  // Apply styles here with more specificity if needed
+  margin: 0,
+  fontSize: '14px',  // Adjust as needed
+};
+
+ componentsProps={{
+          footer: {
+            style: customFooterStyle
+          }
+        }}
