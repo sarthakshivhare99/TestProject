@@ -1,10 +1,4 @@
- componentsProps={{
-            footer: {
-              style: {
-                margin: 0, 
-                fontSize: '14px'  // Adjust as needed
-              }
-            }
-          }}
-        />
-      )}
+.custom-data-grid-footer .MuiDataGrid-footerContainer {
+  margin: 0 !important;
+  font-size: 14px !important; /* Adjust font size as needed */
+}
