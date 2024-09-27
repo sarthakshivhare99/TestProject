@@ -1,9 +1,3 @@
-<CustomModal
-        modalOpen={modalOpen}
-        handleClose={() => setModalOpen(false)}
-        currentView={currentView}
-        editData={editData}
-        newData={newData}
-        setNewData={setNewData}
-        handleAddOrEdit={handleAddOrEdit}
-      />
+<Typography variant="h6" sx={{ mb: 2 }}>
+          {editData ? `Update ${currentView.charAt(0).toUpperCase() + currentView.slice(1)}` : `Add ${currentView.charAt(0).toUpperCase() + currentView.slice(1)}`}
+        </Typography>
