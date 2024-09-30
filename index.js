@@ -1,8 +1,12 @@
-const fetchUserRoles = async () => {
-    try {
-      const response = await axios.post("http://localhost:3001/getUserRolesMdm", {});
-      setRoles(response.data); // Assuming response.data is an array of roles
-    } catch (error) {
-      console.error("Error fetching user roles:", error);
-    }
-  };
+ <FormControlLabel 
+                control={
+                  <Switch 
+                    checked={status} 
+                    onChange={(e) => {
+                      setStatus(e.target.checked);
+                      setNewData({ ...newData, status: e.target.checked ? "Yes" : "No" }); // Update newData with status as Yes/No
+                    }} 
+                  />
+                }
+                label={status ? "Status: Yes" : "Status: No"} 
+              />
