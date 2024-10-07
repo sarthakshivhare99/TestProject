@@ -1,25 +1,50 @@
-const handleEditRow = (row) => {
-    setEditRow(row);
-    setEditUnloadingPoint(row.unloading_point_id);
-    setEditVendor(row.vendor_id);
-    setOpenModal(true);
-  };
- const handleUpdateData = async () => {
-    const payload = {
-      plant: editRow.plant_id,
-      section: editRow.section_id,
-      scrap: editRow.scrap_id,
-      unloadingPoint: editUnloadingPoint,
-      vendor: editVendor,
-      type: 2, // Update type
-    };
+ {
+              field: "actions",
+              headerName: "Actions",
+              width: 150,
+              renderCell: (params) => (
+                <Button
+                  variant="contained"
+                  onClick={() => handleEditRow(params.row)}
+                >
+                  Edit
+                </Button>
+              ),
+            },
 
-    try {
-      await axios.post("/api/MasterDataManagement", payload);
-      const response = await axios.post("/api/getBinDetailsForSelect", {});
-      setBinDetails(response.data);
-      setOpenModal(false);
-    } catch (error) {
-      console.error("Error updating data or fetching bin details:", error);
-    }
-  };
+                  <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        <Box sx={{ p: 4, backgroundColor: "white", margin: "auto", mt: 5 }}>
+          <Typography variant="h6">Edit Row</Typography>
+          <FormControl fullWidth sx={{ mt: 2 }}>
+            <InputLabel>Unloading Point</InputLabel>
+            <Select
+              value={editUnloadingPoint}
+              onChange={(e) => setEditUnloadingPoint(e.target.value)}
+            >
+              {unloadingPoints.map((point, index) => (
+                <MenuItem key={index} value={point}>
+                  {point}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl fullWidth sx={{ mt: 2 }}>
+            <InputLabel>Vendor</InputLabel>
+            <Select
+              value={editVendor}
+              onChange={(e) => setEditVendor(e.target.value)}
+            >
+              {vendors.map((vendor, index) => (
+                <MenuItem key={index} value={vendor}>
+                  {vendor}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <Button variant="contained" sx={{ mt: 2 }} onClick={handleUpdateData}>
+            Update
+          </Button>
+        </Box>
+      </Modal>
