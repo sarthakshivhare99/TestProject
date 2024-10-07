@@ -1,4 +1,6 @@
-  const [openModal, setOpenModal] = useState(false);
-  const [editRow, setEditRow] = useState(null);
-  const [editUnloadingPoint, setEditUnloadingPoint] = useState("");
-  const [editVendor, setEditVendor] = useState("");
+const handleEditRow = (row) => {
+    setEditRow(row);
+    setEditUnloadingPoint(row.unloading_point_id);
+    setEditVendor(row.vendor_id);
+    setOpenModal(true);
+  };
